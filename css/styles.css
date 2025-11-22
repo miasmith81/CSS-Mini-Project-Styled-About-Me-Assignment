@@ -1,0 +1,664 @@
+/* ==========================================
+   CSS Mini-Project - Styled About Me
+   A warm, romantic themed website with glassmorphism effects
+   ========================================== */
+
+/* ==========================================
+   STEP 1: CSS RESET & BASE STYLES
+   ========================================== */
+
+/* CSS Reset & Box Sizing */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* CSS Custom Properties - Color Palette */
+:root {
+    /* Romantic Color Scheme */
+    --soft-rose: #E8B4B8;
+    --cream: #FFF8F0;
+    --deep-burgundy: #8B2635;
+    --soft-gold: #D4AF37;
+    
+    /* Glassmorphism Colors */
+    --glass-bg: rgba(255, 248, 240, 0.1);
+    --glass-border: rgba(232, 180, 184, 0.2);
+    
+    /* Spacing Variables */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Typography */
+    --font-serif: 'Georgia', 'Times New Roman', serif;
+    --font-sans: 'Helvetica Neue', 'Arial', sans-serif;
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 15px;
+    --radius-lg: 20px;
+    --radius-full: 50%;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Body Base Styles */
+body {
+    font-family: var(--font-sans);
+    background: linear-gradient(135deg, var(--cream) 0%, #fff5e6 50%, var(--cream) 100%);
+    background-attachment: fixed;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* ==========================================
+   STEP 2: STICKY NAVIGATION BAR
+   ========================================== */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    
+    /* Glassmorphism Effect */
+    background: rgba(255, 248, 240, 0.75);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+    
+    /* Fallback for browsers without backdrop-filter support */
+    @supports not (backdrop-filter: blur(10px)) {
+        background: rgba(255, 248, 240, 0.95);
+    }
+    
+    padding: var(--spacing-sm) var(--spacing-lg);
+    box-shadow: 0 2px 10px rgba(139, 38, 53, 0.1);
+}
+
+nav::before {
+    content: 'About Me • Mausi & Jagiya • Kumiho Gallery';
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--deep-burgundy);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   STEP 3: MAIN HEADER STYLING
+   ========================================== */
+
+header {
+    text-align: center;
+    padding: calc(var(--spacing-xxl) + 60px) var(--spacing-lg) var(--spacing-xl);
+    background: linear-gradient(135deg, var(--soft-rose) 0%, #d9a5a9 100%);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+header h1 {
+    font-family: var(--font-serif);
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(139, 38, 53, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================================
+   STEP 4: FLEXBOX LAYOUT FOR SECTIONS
+   ========================================== */
+
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--spacing-xl) var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xxl);
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+section > div {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+/* ==========================================
+   STEP 5: IMAGE CARDS WITH GLASSMORPHISM
+   ========================================== */
+
+section img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius-md);
+    
+    /* Card Container Effect */
+    padding: var(--spacing-sm);
+    
+    /* Glassmorphism */
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    
+    /* Shadow for Depth */
+    box-shadow: 0 8px 32px rgba(139, 38, 53, 0.15);
+    
+    /* Smooth Transitions */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    
+    /* Fallback */
+    @supports not (backdrop-filter: blur(10px)) {
+        background: rgba(255, 248, 240, 0.9);
+    }
+}
+
+section img:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(139, 38, 53, 0.25);
+    border-color: var(--soft-rose);
+}
+
+/* ==========================================
+   STEP 6: ABOUT ME SECTION STYLING
+   ========================================== */
+
+section:first-of-type {
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: 0 8px 32px rgba(139, 38, 53, 0.1);
+    
+    @supports not (backdrop-filter: blur(10px)) {
+        background: rgba(255, 248, 240, 0.9);
+    }
+}
+
+section:first-of-type h1 {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: var(--deep-burgundy);
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+}
+
+section:first-of-type img {
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: var(--radius-full);
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+section:first-of-type p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: justify;
+    color: #444;
+}
+
+/* ==========================================
+   STEP 7: MAUSI & JAGIYA SECTION STYLING
+   ========================================== */
+
+section:nth-of-type(2) {
+    text-align: center;
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: 0 8px 32px rgba(139, 38, 53, 0.1);
+    
+    @supports not (backdrop-filter: blur(10px)) {
+        background: rgba(255, 248, 240, 0.9);
+    }
+}
+
+section:nth-of-type(2) h2 {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    color: var(--deep-burgundy);
+    margin-bottom: var(--spacing-md);
+}
+
+section:nth-of-type(2) img {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    height: auto;
+    object-fit: contain;
+}
+
+section:nth-of-type(2) p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto;
+    color: #444;
+}
+
+/* ==========================================
+   STEP 8: KUMIHO GALLERY LAYOUT
+   ========================================== */
+
+section:nth-of-type(3) {
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: 0 8px 32px rgba(139, 38, 53, 0.1);
+    
+    @supports not (backdrop-filter: blur(10px)) {
+        background: rgba(255, 248, 240, 0.9);
+    }
+}
+
+section:nth-of-type(3) h3 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--deep-burgundy);
+    text-align: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+section:nth-of-type(3) > div > p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 800px;
+    margin: 0 auto var(--spacing-lg);
+    text-align: center;
+    color: #444;
+}
+
+/* Gallery Grid */
+section:nth-of-type(3) > div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+/* Keep heading and description outside the grid */
+section:nth-of-type(3) > div > h3,
+section:nth-of-type(3) > div > p {
+    grid-column: 1 / -1;
+}
+
+section:nth-of-type(3) img {
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+    object-fit: cover;
+    aspect-ratio: 3/4;
+}
+
+/* ==========================================
+   STEP 9: FOOTER STYLING
+   ========================================== */
+
+footer {
+    text-align: center;
+    padding: var(--spacing-xl) var(--spacing-lg);
+    margin-top: var(--spacing-xxl);
+    
+    /* Glassmorphism Effect */
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--glass-border);
+    box-shadow: 0 -4px 20px rgba(139, 38, 53, 0.08);
+    
+    @supports not (backdrop-filter: blur(10px)) {
+        background: rgba(255, 248, 240, 0.9);
+    }
+}
+
+footer p {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--deep-burgundy);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   STEP 10: RESPONSIVE DESIGN
+   ========================================== */
+
+/* Tablet Styles (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+    header h1 {
+        font-size: 2.3rem;
+    }
+    
+    section:first-of-type h1 {
+        font-size: 2.2rem;
+    }
+    
+    section:nth-of-type(2) h2 {
+        font-size: 2rem;
+    }
+    
+    section:nth-of-type(3) h3 {
+        font-size: 1.8rem;
+    }
+    
+    section:nth-of-type(3) > div {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--spacing-md);
+    }
+    
+    main {
+        padding: var(--spacing-lg) var(--spacing-md);
+        gap: var(--spacing-xl);
+    }
+}
+
+/* Mobile Styles (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    :root {
+        --spacing-xl: 2rem;
+        --spacing-xxl: 2.5rem;
+    }
+    
+    nav {
+        padding: var(--spacing-sm);
+    }
+    
+    nav::before {
+        font-size: 0.85rem;
+        gap: var(--spacing-sm);
+        flex-wrap: wrap;
+    }
+    
+    header {
+        padding: calc(var(--spacing-xl) + 60px) var(--spacing-md) var(--spacing-lg);
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+        letter-spacing: 0.5px;
+    }
+    
+    main {
+        padding: var(--spacing-md) var(--spacing-sm);
+        gap: var(--spacing-lg);
+    }
+    
+    section:first-of-type,
+    section:nth-of-type(2),
+    section:nth-of-type(3) {
+        padding: var(--spacing-md);
+    }
+    
+    section:first-of-type h1 {
+        font-size: 1.9rem;
+    }
+    
+    section:first-of-type img {
+        max-width: 280px;
+    }
+    
+    section:first-of-type p {
+        font-size: 1rem;
+        text-align: left;
+    }
+    
+    section:nth-of-type(2) h2 {
+        font-size: 1.7rem;
+    }
+    
+    section:nth-of-type(2) img {
+        max-width: 100%;
+    }
+    
+    section:nth-of-type(2) p {
+        font-size: 1rem;
+    }
+    
+    section:nth-of-type(3) h3 {
+        font-size: 1.6rem;
+    }
+    
+    section:nth-of-type(3) > div > p {
+        font-size: 0.95rem;
+    }
+    
+    /* Single Column Gallery on Mobile */
+    section:nth-of-type(3) > div {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    section:nth-of-type(3) img {
+        min-height: 300px;
+    }
+    
+    footer {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+    
+    footer p {
+        font-size: 1rem;
+    }
+}
+
+/* Small Mobile Styles (max-width: 480px) */
+@media screen and (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    nav::before {
+        font-size: 0.75rem;
+        content: 'About • Mausi & Jagiya • Gallery';
+    }
+    
+    section:first-of-type h1 {
+        font-size: 1.6rem;
+    }
+    
+    section:nth-of-type(2) h2 {
+        font-size: 1.5rem;
+    }
+    
+    section:nth-of-type(3) h3 {
+        font-size: 1.4rem;
+    }
+}
+
+/* ==========================================
+   STEP 11: SMOOTH TRANSITIONS & ANIMATIONS
+   ========================================== */
+
+/* Fade-in Animation for Sections */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Stagger animation for multiple sections */
+section:nth-of-type(1) {
+    animation-delay: 0.1s;
+}
+
+section:nth-of-type(2) {
+    animation-delay: 0.2s;
+}
+
+section:nth-of-type(3) {
+    animation-delay: 0.3s;
+}
+
+/* Smooth transitions for all interactive elements */
+a,
+button,
+section,
+section > div,
+section img {
+    transition: all 0.3s ease;
+}
+
+/* Gallery Image Hover Effects */
+section:nth-of-type(3) img:hover {
+    transform: translateY(-8px) scale(1.03);
+}
+
+/* ==========================================
+   STEP 12: FINAL POLISH & ACCESSIBILITY
+   ========================================== */
+
+/* Focus States for Accessibility */
+*:focus {
+    outline: 2px solid var(--soft-gold);
+    outline-offset: 3px;
+}
+
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+
+*:focus-visible {
+    outline: 2px solid var(--soft-gold);
+    outline-offset: 3px;
+}
+
+/* Ensure images maintain aspect ratios */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Text Selection Styling */
+::selection {
+    background-color: var(--soft-rose);
+    color: white;
+}
+
+::-moz-selection {
+    background-color: var(--soft-rose);
+    color: white;
+}
+
+/* Smooth Opacity Transitions */
+section:hover {
+    opacity: 1;
+}
+
+/* Enhanced Box Shadow on Section Cards */
+section:first-of-type:hover,
+section:nth-of-type(2):hover,
+section:nth-of-type(3):hover {
+    box-shadow: 0 12px 40px rgba(139, 38, 53, 0.18);
+}
+
+/* Consistent Typography Hierarchy */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    line-height: 1.2;
+    color: var(--deep-burgundy);
+}
+
+p {
+    font-family: var(--font-sans);
+}
+
+/* Print Styles */
+@media print {
+    nav {
+        position: relative;
+    }
+    
+    section img {
+        break-inside: avoid;
+    }
+    
+    body {
+        background: white;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    :root {
+        --glass-bg: rgba(255, 248, 240, 0.95);
+        --glass-border: rgba(139, 38, 53, 0.5);
+    }
+    
+    section img {
+        border: 2px solid var(--deep-burgundy);
+    }
+}
+/* end of css */

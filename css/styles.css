@@ -92,18 +92,50 @@ nav {
     
     padding: var(--spacing-sm) var(--spacing-lg);
     box-shadow: 0 2px 10px rgba(139, 38, 53, 0.1);
-}
-
-nav::before {
-    content: 'About Me • Mausi & Jagiya • Kumiho Gallery';
     display: flex;
     justify-content: center;
     gap: var(--spacing-lg);
+}
+
+nav a {
     font-family: var(--font-serif);
     font-size: 1.1rem;
     color: var(--text-heading);
     font-weight: 600;
     letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--text-accent);
+    transition: width 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--text-accent);
+    transform: translateY(-2px);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+nav a:focus-visible {
+    outline: 2px solid var(--soft-gold);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+nav::before {
+    content: none;
 }
 
 /* ==========================================
@@ -416,12 +448,12 @@ footer p {
     
     nav {
         padding: var(--spacing-sm);
-    }
-    
-    nav::before {
-        font-size: 0.85rem;
         gap: var(--spacing-sm);
         flex-wrap: wrap;
+    }
+    
+    nav a {
+        font-size: 0.85rem;
     }
     
     header {
@@ -502,9 +534,8 @@ footer p {
         font-size: 1.5rem;
     }
     
-    nav::before {
+    nav a {
         font-size: 0.75rem;
-        content: 'About • Mausi & Jagiya • Gallery';
     }
     
     section:first-of-type h1 {
